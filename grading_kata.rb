@@ -1,23 +1,9 @@
-def grademaker()
+def grademaker(name,grade)
   hash = {}
-  answer = "yes"
-  
-  while answer == "yes"
-  p "Would you like to input a student and grade?..(yes/no)"
-  answer = gets.chomp
-    case answer 
-      when "yes"
-        puts "Please add a name: "
-        name = gets.chomp
-         hash[name] = name
-        puts "Please enter grade: "
-        grade = gets.chomp.to_i
-        hash[name] = grade.to_i
-      when "no"
-        break
-      end
-  
-    case grade
+  hash[name] = name
+  hash[name] = grade.to_i
+
+   case grade
     when 0..40 then changedgrade = grade
     when 41..45 then changedgrade = 45
     when 46..50 then changedgrade = 50
@@ -31,21 +17,16 @@ def grademaker()
     when 86..90 then changedgrade = 90
     when 91..95 then changedgrade = 95
     when 96..100 then changedgrade = 100
-    else 
-    "Invalid Score"
-  end
+    end
+
   hash[name] = changedgrade.to_s
+  hash
 end
-  p hash  
-  puts "Here is your gradebook: #{hash.to_a}"
-  hash_array = hash.to_a
+
+def gradebook(hash_array)
+  new_array = []
   hash_array.each do |n,grade|
-    puts n
-    puts grade
+    new_array << grademaker(n,grade)
   end
+  new_array
 end
-
-grademaker()
-
-
-# Add CommentCollapse 
